@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,6 +61,19 @@ public class MedicoController implements Serializable {
 		
 		attributes.addFlashAttribute("mensagem", "Contato salvo com sucesso");
 		this.service.salva(medico);
+		return mv;
+	}
+	
+	@GetMapping("/edite/{id}")
+	public ModelAndView edite(@PathVariable Long id) {
+		return novo(this.service.getMedicoById(id));
+	}
+	
+	@GetMapping("/delete/{id}")
+	public ModelAndView delete(@PathVariable Long id, RedirectAttributes attibutes) {
+		ModelAndView mv = new ModelAndView("redirect:/medicos/list");
+		this.service.delete(id);
+		attibutes.addFlashAttribute("mensagem","Médico removido com sucesso");
 		return mv;
 	}
 

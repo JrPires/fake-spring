@@ -45,4 +45,36 @@ public class Medico implements Serializable {
 	
 	@NotBlank(message = "CRM é obrigatório")
 	private String crm;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCrm() {
+		return crm;
+	}
+
+	public void setCrm(String crm) {
+		this.crm = crm;
+	}
 }

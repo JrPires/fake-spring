@@ -33,4 +33,14 @@ public class MedicoService {
 		this.repository.save(medico);
 	}
 	
+	@Transactional
+	public void delete(Long id) {
+		this.repository.deleteById(id);
+	}
+
+	@Transactional
+	public Medico getMedicoById(Long id) {
+		return repository.getOne(id);
+	}
+	
 }
